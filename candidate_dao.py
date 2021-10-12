@@ -17,7 +17,7 @@ def getMySQLConnection():
         logger.info("Database hostname is " + dbhostname)
         connection_config_dict = {
             'user': 'edureka',
-            'password': 'edureka',
+            'password': 'edureka123',
             'host': dbhostname,
             'port': '3306',
             'database': 'dinasys',
@@ -82,7 +82,7 @@ def addCandidateDAO(name, address, qualification, jobskill, yearsofexperience, p
     connection = getMySQLConnection()
     executeDBInsertQuery(connection, insert_stmt, data)
 
-    s3_bucket_name = "dina-recruting-agency-resume"
+    s3_bucket_name = "dina-recruting-agency-resume2"
     region = "ap-south-1"
     resumeName = str(candidateid) + "_" + name + "_" + postedresumefilepath.split("/", 1)[1]
     uploadResumeToS3Bucket(s3_bucket_name, region, postedresumefilepath, resumeName)
