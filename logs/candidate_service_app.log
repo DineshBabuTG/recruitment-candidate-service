@@ -1,0 +1,99 @@
+2021-10-10 12:54:52,149 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-10-10 12:54:52,150 - werkzeug - INFO -  * Running on http://10.104.41.156:8000/ (Press CTRL+C to quit)
+2021-10-10 12:56:53,638 - candidate_service - INFO - In Ger All Candidates API
+2021-10-10 12:56:53,638 - candidate_dao - INFO - In Get Candidates DB Service
+2021-10-10 12:56:53,638 - candidate_dao - INFO - Database hostname is 192.168.1.19
+2021-10-10 12:56:53,719 - candidate_dao - INFO - In Finally of DB Connection
+2021-10-10 12:56:53,729 - candidate_dao - INFO - Query executed successfully select * from candidates
+2021-10-10 12:56:53,729 - candidate_dao - INFO - Successfully get the candidates [(87578, 'Dina', 'Bangalore', 'MCA', 'Automation', '11'), (437841, 'Rahul', 'WesBengal', 'BE ECE', 'Devops', '6'), (338755, 'Somu', 'Madurai', 'BSC', 'Testing', '3'), (197685, 'Rahul', 'WestBengal', 'BE EEE', 'Developer', '5'), (474061, 'Balaji', 'Avaniyapuram', 'BE ECE', 'Automation Engineer', '6'), (576205, 'Ramu', 'Chennai', 'BE ECE', 'SRE', '3')]
+2021-10-10 12:56:53,730 - candidate_service - INFO - [{'candidateid': 87578, 'name': 'Dina', 'address': 'Bangalore', 'qualification': 'MCA', 'jobskill': 'Automation', 'yearsofexperience': '11'}, {'candidateid': 437841, 'name': 'Rahul', 'address': 'WesBengal', 'qualification': 'BE ECE', 'jobskill': 'Devops', 'yearsofexperience': '6'}, {'candidateid': 338755, 'name': 'Somu', 'address': 'Madurai', 'qualification': 'BSC', 'jobskill': 'Testing', 'yearsofexperience': '3'}, {'candidateid': 197685, 'name': 'Rahul', 'address': 'WestBengal', 'qualification': 'BE EEE', 'jobskill': 'Developer', 'yearsofexperience': '5'}, {'candidateid': 474061, 'name': 'Balaji', 'address': 'Avaniyapuram', 'qualification': 'BE ECE', 'jobskill': 'Automation Engineer', 'yearsofexperience': '6'}, {'candidateid': 576205, 'name': 'Ramu', 'address': 'Chennai', 'qualification': 'BE ECE', 'jobskill': 'SRE', 'yearsofexperience': '3'}]
+2021-10-10 12:56:53,730 - werkzeug - INFO - 192.168.1.19 - - [10/Oct/2021 12:56:53] "GET /candidateservice/getallcandidates HTTP/1.1" 200 -
+2021-10-10 12:58:08,257 - candidate_service_app - INFO - JSON Request: {'name': 'Sundar', 'address': 'Hyderabad', 'qualification': 'BTech', 'jobskill': 'Devops Engineer', 'yearsofexperience': '4'}
+2021-10-10 12:58:08,257 - candidate_service_app - INFO - name: Sundar
+2021-10-10 12:58:08,259 - candidate_service_app - INFO - Going to call add candidate API...
+2021-10-10 12:58:08,259 - candidate_service - INFO - In Add Candidate API
+2021-10-10 12:58:08,259 - candidate_service - INFO - name Sundar address Hyderabad qualification BTech jobskill Devops Engineer yearsofexperience 4
+2021-10-10 12:58:08,259 - candidate_dao - INFO - In Add Candidate DAO Service
+2021-10-10 12:58:08,259 - candidate_dao - INFO - candidateid 965630 name Sundar address Hyderabad qualification BTech jobskill Devops Engineer yearsofexperience 4
+2021-10-10 12:58:08,268 - candidate_dao - INFO - Database hostname is 192.168.1.19
+2021-10-10 12:58:08,316 - candidate_dao - INFO - In Finally of DB Connection
+2021-10-10 12:58:08,347 - candidate_dao - INFO - Query executed successfully INSERT INTO candidates (candidateid, name, address, qualification, jobskill, yearsofexperience) VALUES (%s, %s, %s, %s, %s, %s)
+2021-10-10 12:58:08,348 - candidate_dao - INFO - Going to update resume with name 965630_Sundar_/Sundar Resume.pdf in S3 bucket dina-recruting-agency-resume
+2021-10-10 12:58:08,348 - candidate_service_app - ERROR - Exception on /candidateservice/addcandidate [POST]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/flask/app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/flask/app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/flask/app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/flask/app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/Users/dgnaneswaran/OneDrive - VMware, Inc/Dina/VM Materials/Take1/Cloud Architect Course works/Cloud Architect Final Project/Recruting-Agency/recruitment-candidate-service/candidate_service_app.py", line 35, in add_candidate
+    candidateAdded = candidate_service.addCandidate(name=name, address=address, qualification=qualification, jobskill=jobskill, yearsofexperience=yearsofexperience, postedresumefilepath=postedresumefilepath)
+  File "/Users/dgnaneswaran/OneDrive - VMware, Inc/Dina/VM Materials/Take1/Cloud Architect Course works/Cloud Architect Final Project/Recruting-Agency/recruitment-candidate-service/candidate_service.py", line 18, in addCandidate
+    candidate_dao.addCandidateDAO(name, address, qualification, jobskill, yearsofexperience, postedresumefilepath)
+  File "/Users/dgnaneswaran/OneDrive - VMware, Inc/Dina/VM Materials/Take1/Cloud Architect Course works/Cloud Architect Final Project/Recruting-Agency/recruitment-candidate-service/candidate_dao.py", line 88, in addCandidateDAO
+    uploadResumeToS3Bucket(s3_bucket_name, region, postedresumefilepath, resumeName)
+  File "/Users/dgnaneswaran/OneDrive - VMware, Inc/Dina/VM Materials/Take1/Cloud Architect Course works/Cloud Architect Final Project/Recruting-Agency/recruitment-candidate-service/candidate_dao.py", line 98, in uploadResumeToS3Bucket
+    aws_access_key_id=os.environ['awsacceskey'],
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/os.py", line 679, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'awsacceskey'
+2021-10-10 12:58:08,350 - werkzeug - INFO - 192.168.1.19 - - [10/Oct/2021 12:58:08] "[35m[1mPOST /candidateservice/addcandidate HTTP/1.1[0m" 500 -
+2021-10-10 13:00:20,622 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-10-10 13:00:20,623 - werkzeug - INFO -  * Running on http://10.104.41.156:8000/ (Press CTRL+C to quit)
+2021-10-10 13:01:16,705 - candidate_service_app - INFO - JSON Request: {'name': 'Sundar', 'address': 'Hyderabad', 'qualification': 'BTech', 'jobskill': 'Devops Engineer', 'yearsofexperience': '4'}
+2021-10-10 13:01:16,705 - candidate_service_app - INFO - name: Sundar
+2021-10-10 13:01:16,706 - candidate_service_app - INFO - Going to call add candidate API...
+2021-10-10 13:01:16,706 - candidate_service - INFO - In Add Candidate API
+2021-10-10 13:01:16,707 - candidate_service - INFO - name Sundar address Hyderabad qualification BTech jobskill Devops Engineer yearsofexperience 4
+2021-10-10 13:01:16,707 - candidate_dao - INFO - In Add Candidate DAO Service
+2021-10-10 13:01:16,707 - candidate_dao - INFO - candidateid 432344 name Sundar address Hyderabad qualification BTech jobskill Devops Engineer yearsofexperience 4
+2021-10-10 13:01:16,724 - candidate_dao - INFO - Database hostname is 192.168.1.19
+2021-10-10 13:01:16,756 - candidate_dao - INFO - In Finally of DB Connection
+2021-10-10 13:01:16,767 - candidate_dao - INFO - Query executed successfully INSERT INTO candidates (candidateid, name, address, qualification, jobskill, yearsofexperience) VALUES (%s, %s, %s, %s, %s, %s)
+2021-10-10 13:01:16,767 - candidate_dao - INFO - Going to update resume with name 432344_Sundar_/Sundar Resume.pdf in S3 bucket dina-recruting-agency-resume
+2021-10-10 13:01:18,249 - candidate_dao - INFO - Successfully inserted the candidate entry for the id 432344
+2021-10-10 13:01:18,250 - werkzeug - INFO - 192.168.1.19 - - [10/Oct/2021 13:01:18] "POST /candidateservice/addcandidate HTTP/1.1" 200 -
+2021-10-10 13:10:47,661 - werkzeug - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-10-10 13:10:47,662 - werkzeug - INFO -  * Running on http://10.104.41.156:8000/ (Press CTRL+C to quit)
+2021-10-10 13:11:00,720 - candidate_service_app - INFO - JSON Request: {'name': 'Sundar', 'address': 'Hyderabad', 'qualification': 'BTech', 'jobskill': 'Devops Engineer', 'yearsofexperience': '4'}
+2021-10-10 13:11:00,720 - candidate_service_app - INFO - name: Sundar
+2021-10-10 13:11:00,720 - candidate_service_app - INFO - Resume File name retrieved is /Sundar Resume.pdf
+2021-10-10 13:11:00,721 - candidate_service_app - INFO - Going to call add candidate API...
+2021-10-10 13:11:00,721 - candidate_service - INFO - In Add Candidate API
+2021-10-10 13:11:00,721 - candidate_service - INFO - name Sundar address Hyderabad qualification BTech jobskill Devops Engineer yearsofexperience 4
+2021-10-10 13:11:00,721 - candidate_dao - INFO - In Add Candidate DAO Service
+2021-10-10 13:11:00,721 - candidate_dao - INFO - candidateid 249661 name Sundar address Hyderabad qualification BTech jobskill Devops Engineer yearsofexperience 4
+2021-10-10 13:11:00,731 - candidate_dao - INFO - Database hostname is 192.168.1.19
+2021-10-10 13:11:00,757 - candidate_dao - INFO - In Finally of DB Connection
+2021-10-10 13:11:00,766 - candidate_dao - INFO - Query executed successfully INSERT INTO candidates (candidateid, name, address, qualification, jobskill, yearsofexperience) VALUES (%s, %s, %s, %s, %s, %s)
+2021-10-10 13:11:00,766 - candidate_dao - INFO - Going to update resume with name 249661_Sundar_/Sundar Resume.pdf in S3 bucket dina-recruting-agency-resume
+2021-10-10 13:11:01,343 - candidate_dao - INFO - Successfully inserted the candidate entry for the id 249661
+2021-10-10 13:11:01,344 - werkzeug - INFO - 192.168.1.19 - - [10/Oct/2021 13:11:01] "POST /candidateservice/addcandidate HTTP/1.1" 200 -
+2021-10-10 13:13:07,449 - candidate_service_app - INFO - JSON Request: {'name': 'Sundar', 'address': 'Hyderabad', 'qualification': 'BTech', 'jobskill': 'Devops Engineer', 'yearsofexperience': '4'}
+2021-10-10 13:13:07,449 - candidate_service_app - INFO - name: Sundar
+2021-10-10 13:13:07,450 - candidate_service_app - INFO - Resume File name retrieved is Sundar Resume.pdf
+2021-10-10 13:13:07,450 - candidate_service_app - INFO - Going to call add candidate API...
+2021-10-10 13:13:07,450 - candidate_service - INFO - In Add Candidate API
+2021-10-10 13:13:07,450 - candidate_service - INFO - name Sundar address Hyderabad qualification BTech jobskill Devops Engineer yearsofexperience 4
+2021-10-10 13:13:07,450 - candidate_dao - INFO - In Add Candidate DAO Service
+2021-10-10 13:13:07,450 - candidate_dao - INFO - candidateid 501886 name Sundar address Hyderabad qualification BTech jobskill Devops Engineer yearsofexperience 4
+2021-10-10 13:13:07,454 - candidate_dao - INFO - Database hostname is 192.168.1.19
+2021-10-10 13:13:07,474 - candidate_dao - INFO - In Finally of DB Connection
+2021-10-10 13:13:07,487 - candidate_dao - INFO - Query executed successfully INSERT INTO candidates (candidateid, name, address, qualification, jobskill, yearsofexperience) VALUES (%s, %s, %s, %s, %s, %s)
+2021-10-10 13:13:07,487 - candidate_dao - INFO - Going to update resume with name 501886_Sundar_Sundar Resume.pdf in S3 bucket dina-recruting-agency-resume
+2021-10-10 13:13:08,818 - candidate_dao - INFO - Successfully inserted the candidate entry for the id 501886
+2021-10-10 13:13:08,819 - werkzeug - INFO - 192.168.1.19 - - [10/Oct/2021 13:13:08] "POST /candidateservice/addcandidate HTTP/1.1" 200 -
+2021-10-10 13:13:40,661 - candidate_service - INFO - In Ger All Candidates API
+2021-10-10 13:13:40,661 - candidate_dao - INFO - In Get Candidates DB Service
+2021-10-10 13:13:40,661 - candidate_dao - INFO - Database hostname is 192.168.1.19
+2021-10-10 13:13:40,683 - candidate_dao - INFO - In Finally of DB Connection
+2021-10-10 13:13:40,687 - candidate_dao - INFO - Query executed successfully select * from candidates
+2021-10-10 13:13:40,687 - candidate_dao - INFO - Successfully get the candidates [(87578, 'Dina', 'Bangalore', 'MCA', 'Automation', '11'), (437841, 'Rahul', 'WesBengal', 'BE ECE', 'Devops', '6'), (338755, 'Somu', 'Madurai', 'BSC', 'Testing', '3'), (197685, 'Rahul', 'WestBengal', 'BE EEE', 'Developer', '5'), (474061, 'Balaji', 'Avaniyapuram', 'BE ECE', 'Automation Engineer', '6'), (576205, 'Ramu', 'Chennai', 'BE ECE', 'SRE', '3'), (501886, 'Sundar', 'Hyderabad', 'BTech', 'Devops Engineer', '4')]
+2021-10-10 13:13:40,687 - candidate_service - INFO - [{'candidateid': 87578, 'name': 'Dina', 'address': 'Bangalore', 'qualification': 'MCA', 'jobskill': 'Automation', 'yearsofexperience': '11'}, {'candidateid': 437841, 'name': 'Rahul', 'address': 'WesBengal', 'qualification': 'BE ECE', 'jobskill': 'Devops', 'yearsofexperience': '6'}, {'candidateid': 338755, 'name': 'Somu', 'address': 'Madurai', 'qualification': 'BSC', 'jobskill': 'Testing', 'yearsofexperience': '3'}, {'candidateid': 197685, 'name': 'Rahul', 'address': 'WestBengal', 'qualification': 'BE EEE', 'jobskill': 'Developer', 'yearsofexperience': '5'}, {'candidateid': 474061, 'name': 'Balaji', 'address': 'Avaniyapuram', 'qualification': 'BE ECE', 'jobskill': 'Automation Engineer', 'yearsofexperience': '6'}, {'candidateid': 576205, 'name': 'Ramu', 'address': 'Chennai', 'qualification': 'BE ECE', 'jobskill': 'SRE', 'yearsofexperience': '3'}, {'candidateid': 501886, 'name': 'Sundar', 'address': 'Hyderabad', 'qualification': 'BTech', 'jobskill': 'Devops Engineer', 'yearsofexperience': '4'}]
+2021-10-10 13:13:40,688 - werkzeug - INFO - 192.168.1.19 - - [10/Oct/2021 13:13:40] "GET /candidateservice/getallcandidates HTTP/1.1" 200 -
